@@ -1,10 +1,6 @@
 data "infoblox_mx_record" "ds1" {
     // the arguments are taken from the examples for infoblox_mx_record resource
-
-    // as we use a reference to a resource's field, we do not know if
-    // it is 'default' (may be omitted) or not.
-    dns_view = infoblox_mx_record.rec2.dns_view
-
+    dns_view = infoblox_mx_record.rec2.dns_view // required
     fqdn = infoblox_mx_record.rec2.fqdn
     mail_exchanger = infoblox_mx_record.rec2.mail_exchanger
     preference = infoblox_mx_record.rec2.preference

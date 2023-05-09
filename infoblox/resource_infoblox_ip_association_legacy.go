@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
 )
 
 func resourceIpAssoc() *schema.Resource {

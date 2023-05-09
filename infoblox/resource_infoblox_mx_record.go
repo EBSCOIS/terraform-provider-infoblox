@@ -3,8 +3,8 @@ package infoblox
 import (
 	"encoding/json"
 	"fmt"
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
 )
 
 func resourceMXRecord() *schema.Resource {

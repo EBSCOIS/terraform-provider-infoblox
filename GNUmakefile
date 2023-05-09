@@ -48,3 +48,7 @@ test-compile:
 
 .PHONY: build test testacc vet fmt fmtcheck errcheck test-compile
 
+test-changes:
+	go mod vendor
+	make build
+	TF_LOG=info terraform plan

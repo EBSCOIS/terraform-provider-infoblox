@@ -9,30 +9,15 @@ To get information about a network, you must specify a combination of the networ
 network address in the CIDR format.
 The following list describes the parameters you must define in an `infoblox_ipv4_network` data source block (all of them are required):
 
-* `network_view`: optional, specifies the network view which the network container exists in. If a value is not specified, the name `default` is used as the network view.
+* `network_view`: the network view in which the network exists.
 * `cidr`: specifies the network block which correcponds to the network, in CIDR notation. Do not use the IPv6 CIDR for an IPv4 network.
 
 ### Example of a Network Data Source Block
 
 ```hcl
-resource "infoblox_ipv4_network" "net2" {
-  cidr = "192.168.128.0/20"
-  network_view = "nondefault_netview"
-  reserve_ip = 5
-  gateway = "192.168.128.254"
-  comment = "small network for testing"
-  ext_attrs = jsonencode({
-    "Site" = "bla-bla-bla... testing..."
-  })
-}
-
 data "infoblox_ipv4_network" "nearby_network" {
-  network_view = "nondefault_netview"
+  network_view = "default"
   cidr = "192.168.128.0/20"
-
-  // This is just to ensure that the network has been be created
-  // using 'infoblox_ipv4_network' resource block before the data source will be queried.
-  depends_on = [infoblox_ipv4_network.net2]
 }
 
 output "nearby_network_comment" {

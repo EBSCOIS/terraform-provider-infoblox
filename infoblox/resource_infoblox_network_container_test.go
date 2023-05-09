@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 )
 
 var resCfgNetworkContainer_create_ipv4 = fmt.Sprintf(`

@@ -2,12 +2,11 @@ package infoblox
 
 import (
 	"fmt"
-	"regexp"
 	"testing"
 
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
 )
 
 func validateFuncForSetOfRecordPTR(expectedValues map[string]*ibclient.RecordPTR) resource.TestCheckFunc {
@@ -167,49 +166,6 @@ func TestAcc_resourceRecordPTR(t *testing.T) {
 			{
 				Config: testCasePtrRecordTestData01,
 				Check:  validateFuncForSetOfRecordPTR(testCasePtrRecordExpectedData01),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData01,
-				ExpectError: regexp.MustCompile("only one of 'ip_addr', 'cidr' and 'record_name' must be defined"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData02,
-				ExpectError: regexp.MustCompile("only one of 'ip_addr', 'cidr' and 'record_name' must be defined"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData03,
-				ExpectError: regexp.MustCompile("only one of 'ip_addr', 'cidr' and 'record_name' must be defined"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData04,
-				ExpectError: regexp.MustCompile("only one of 'ip_addr', 'cidr' and 'record_name' must be defined"),
-			},
-			{
-				Config: testCasePtrRecordTestErrData05Pre,
-			},
-			{
-				Config:      testCasePtrRecordTestErrData05,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData06,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData07,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData08,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData09,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
-			},
-			{
-				Config:      testCasePtrRecordTestErrData10,
-				ExpectError: regexp.MustCompile("only one of 'cidr', 'ip_addr' and 'record_name' is allowed to be non-empty"),
 			},
 		},
 	})

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
 )
 
 func testAccCheckNetworkViewRecordDestroy(s *terraform.State) error {

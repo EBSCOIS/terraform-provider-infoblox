@@ -44,7 +44,7 @@ Complete the follwing steps to build the binary:
     $ cd `go env GOPATH`/src
     $ mkdir -p github.com/infobloxopen
     $ cd github.com/infobloxopen
-    $ git clone https://github.com/infobloxopen/terraform-provider-infoblox
+    $ git clone https://github.com/ebscois/platform.infrastructure.terraform-provider-infoblox
     $ cd terraform-provider-infoblox
     $ make build
   ```  

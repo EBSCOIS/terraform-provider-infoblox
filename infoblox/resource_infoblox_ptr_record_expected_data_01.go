@@ -1,6 +1,6 @@
 package infoblox
 
-import ibclient "github.com/infobloxopen/infoblox-go-client/v2"
+import ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 
 var testCasePtrRecordExpectedData01 = map[string]*ibclient.RecordPTR{
 	"infoblox_ptr_record.rec1": {

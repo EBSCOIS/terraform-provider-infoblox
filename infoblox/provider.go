@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	ibclient "github.com/infobloxopen/infoblox-go-client/v2"
+	ibclient "github.com/ebscois/platform.infrastructure.infoblox-go-client/v2"
 )
 
 // Common parameters
@@ -214,16 +214,17 @@ func Provider() *schema.Provider {
 			"infoblox_srv_record":             resourceSRVRecord(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"infoblox_ipv4_network":           dataSourceIPv4Network(),
-			"infoblox_ipv4_network_container": dataSourceIpv4NetworkContainer(),
-			"infoblox_network_view":           dataSourceNetworkView(),
-			"infoblox_a_record":               dataSourceARecord(),
-			"infoblox_aaaa_record":            dataSourceAAAARecord(),
-			"infoblox_cname_record":           dataSourceCNameRecord(),
-			"infoblox_ptr_record":             dataSourcePtrRecord(),
-			"infoblox_txt_record":             dataSourceTXTRecord(),
-			"infoblox_mx_record":              dataSourceMXRecord(),
-			"infoblox_srv_record":             dataSourceSRVRecord(),
+			"infoblox_ipv4_network":            dataSourceIPv4Network(),
+			"infoblox_ipv4_network_containers": dataSourceIpv4NetworkContainers(),
+			"infoblox_ipv4_network_container":  dataSourceIpv4NetworkContainer(),
+			"infoblox_network_view":            dataSourceNetworkView(),
+			"infoblox_a_record":                dataSourceARecord(),
+			"infoblox_aaaa_record":             dataSourceAAAARecord(),
+			"infoblox_cname_record":            dataSourceCNameRecord(),
+			"infoblox_ptr_record":              dataSourcePtrRecord(),
+			"infoblox_txt_record":              dataSourceTXTRecord(),
+			"infoblox_mx_record":               dataSourceMXRecord(),
+			"infoblox_srv_record":              dataSourceSRVRecord(),
 		},
 		ConfigureContextFunc: providerConfigure,
 	}

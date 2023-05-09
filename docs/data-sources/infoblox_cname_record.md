@@ -11,33 +11,17 @@ To get information about a CNAME-record, specify a combination of the DNS view, 
 
 The following list describes the parameters you must define in an `infoblox_cname_record` data source block (all of them are required):
 
-* `dns_view`: optional, specifies the DNS view which the record's zone belongs to. If a value is not specified, the name `default` is used as the DNS view.
+* `dns_view`: specifies the DNS view in which the record exists.
 * `canonical`: specifies the canonical name of the record in the FQDN format.
 * `alias`: specifies the alias name of the record in the FQDN format.
 
 ### Example of the CNAME-record Data Source Block
 
 ```hcl
-resource "infoblox_cname_record" "foo" {
-  dns_view = "default.nondefault_netview"
-  canonical = "strange-place.somewhere.in.the.net"
-  alias = "foo.test.com"
-  comment = "we need to keep an eye on this strange host"
-  ttl = 0 // disable caching
-  ext_attrs = jsonencode({
-    Site = "unknown"
-    Location = "TBD"
-  })
-}
-
 data "infoblox_cname_record" "foo"{
-  dns_view="default.nondefault_netview"
+  dns_view="default"
   alias="foo.test.com"
   canonical="main.test.com"
-
-  // This is just to ensure that the record has been be created
-  // using 'infoblox_cname_record' resource block before the data source will be queried.
-  depends_on = [infoblox_cname_record.foo]
 }
 
 output "foo_ttl" {
