@@ -1,24 +1,32 @@
-name: Tag Merge to Master
+name: Merge to Main
 
 on:
   push:
     branches:
-    - master
+    - main
 
 env:
   CGO_ENABLED: "0"
 
 jobs:
-
-  tag:
-    name: Bump semantic version
-    runs-on: [ubuntu-latest]
+# build
+  build:
+    name: Build
+    runs-on: ubuntu-latest
     steps:
+      - run: |
+          go mod vendor
+          make build
 
-    - uses: actions/checkout@v2
-
-    - uses: anothrNick/github-tag-action@1.35.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_BUMP: patch
-        WITH_V: true
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+      - run: |
+          jf rt ping
+          
