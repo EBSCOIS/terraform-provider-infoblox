@@ -11,6 +11,13 @@ provider "infoblox" {
   username = "admin"
 }
 
+// create containers from list of cidrs
+resource "infoblox_ipv4_network_container" "this" {
+  for_each = toset(split(", ", data.infoblox_ipv4_network_containers.this.network))
+  network_view = "sheepstest"
+  cidr = each.value
+}
+
 // Get container name to pass below
 data "infoblox_network_view" "netview" {
   name = "vdiscovery"
@@ -32,7 +39,7 @@ data "infoblox_ipv4_network_containers" "this" {
 }
 
 output "this" {
-  value = data.infoblox_ipv4_network_containers.this.network
+  value = split(", ", data.infoblox_ipv4_network_containers.this.network)
 }
 
 // Create container
